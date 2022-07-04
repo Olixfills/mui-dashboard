@@ -1,5 +1,5 @@
 import React from 'react'
-import { Paper, Card, Typography, makeStyles, Button } from '@material-ui/core'
+import { Paper, Card, Typography, makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -23,10 +23,10 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-export default function PageHeader(props) {
+export default function PageHeader({ title, subTitle, icon }) {
 
     const classes = useStyles();
-    const { title, subTitle, icon } = props;
+    
     return (
         <Paper elevation={0} square className={classes.root}>
             <div className={classes.pageHeader}>

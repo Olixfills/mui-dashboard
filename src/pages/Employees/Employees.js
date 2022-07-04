@@ -58,7 +58,7 @@ export default function Employees() {
         let target = e.target;
         setFilterFn({
             fn: items => {
-                if (target.value == "")
+                if (target.value === "")
                     return items;
                 else
                     return items.filter(x => x.fullName.toLowerCase().includes(target.value))
@@ -67,7 +67,7 @@ export default function Employees() {
     }
 
     const addOrEdit = (employee, resetForm) => {
-        if (employee.id == 0)
+        if (employee.id === 0)
             employeeService.insertEmployee(employee)
         else
             employeeService.updateEmployee(employee)
@@ -104,8 +104,8 @@ export default function Employees() {
     return (
         <>
             <PageHeader
-                title="New Employee"
-                subTitle="Form design with validation"
+                title="Employee List"
+                subTitle="All verified Employees"
                 icon={<PeopleOutlineTwoToneIcon fontSize="large" />}
             />
             <Paper className={classes.pageContent}>
@@ -150,7 +150,7 @@ export default function Employees() {
                                             onClick={() => {
                                                 setConfirmDialog({
                                                     isOpen: true,
-                                                    title: 'Are you sure to delete this record?',
+                                                    title: 'Are you sure you want to delete this record?',
                                                     subTitle: "You can't undo this operation",
                                                     onConfirm: () => { onDelete(item.id) }
                                                 })

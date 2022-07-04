@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Grid, } from '@material-ui/core';
 import Controls from "../../components/controls/Controls";
 import { useForm, Form } from '../../components/useForm';
@@ -31,17 +31,17 @@ export default function EmployeeForm(props) {
         if ('fullName' in fieldValues)
             temp.fullName = fieldValues.fullName ? "" : "This field is required."
         if ('email' in fieldValues)
-            temp.email = (/$^|.+@.+..+/).test(fieldValues.email) ? "" : "Email is not valid."
+            temp.email = (/$^|.+@.+..+/).test(fieldValues.email) ? "" : "Please enter a valid email address"
         if ('mobile' in fieldValues)
-            temp.mobile = fieldValues.mobile.length > 9 ? "" : "Minimum 10 numbers required."
+            temp.mobile = fieldValues.mobile.length > 9 ? "" : "Minimum of 10 numbers is required."
         if ('departmentId' in fieldValues)
-            temp.departmentId = fieldValues.departmentId.length != 0 ? "" : "This field is required."
+            temp.departmentId = fieldValues.departmentId.length !== 0 ? "" : "This field is required."
         setErrors({
             ...temp
         })
 
-        if (fieldValues == values)
-            return Object.values(temp).every(x => x == "")
+        if (fieldValues === values)
+            return Object.values(temp).every(x => x === "")
     }
 
     const {
@@ -65,7 +65,7 @@ export default function EmployeeForm(props) {
             setValues({
                 ...recordForEdit
             })
-    }, [recordForEdit])
+    }, [recordForEdit, setValues])
 
     return (
         <Form onSubmit={handleSubmit}>

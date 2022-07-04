@@ -40,7 +40,7 @@ export default function Header() {
                             startAdornment={<SearchIcon fontSize="small" />}
                         />
                     </Grid>
-                    <Grid item sm></Grid>
+                    <Grid item sm/>
                     <Grid item>
                         <IconButton>
                             <Badge badgeContent={4} color="secondary">
